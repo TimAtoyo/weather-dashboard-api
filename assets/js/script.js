@@ -3,8 +3,7 @@ var searchButton = document.querySelector("#search-button");
 var todayLeftWeatherEl = document.querySelector(".today-left");
 var todayRightWeatherEl = document.querySelector(".today-right");
 var forcastRow = document.querySelector(".forcast-row");
-var quickBtn = document.querySelector('.quick-btn');
-
+var quickBtn = document.querySelector(".quick-btn");
 
 var handleWeather = function (e) {};
 
@@ -13,25 +12,38 @@ searchButton.addEventListener("click", function (e) {
   todayLeftWeatherEl.textContent = "";
   todayRightWeatherEl.textContent = "";
   forcastRow.textContent = "";
-  quickBtn.textContent = '';
-
- 
+  quickBtn.textContent = "";
+  var citiesBtnArr = [];
 
   var API_Key = "857f61713ca1c679c09b07553f7ca2e7";
   if (searchInput.value.trim() === "") {
   } else if (searchInput.value.trim()) {
     var city = searchInput.value.trim();
-    
-    var recentSearchButton = document.createElement('button');
-    recentSearchButton.dataset.search = city;
-    recentSearchButton.textContent = city;
-    recentSearchButton.setAttribute('class', 'd-flex');
-    recentSearchButton.setAttribute('class', 'btn');
-    recentSearchButton.setAttribute('class', 'btn-secondary');
-    recentSearchButton.setAttribute('class', 'flex-grow-1');
-    quickBtn.append(recentSearchButton);
+    citiesBtnArr.push(city);
 
-    
+    if (
+      getCities === undefined ||
+      getCities.length === 0 ||
+      getCities === null
+    ) {
+      localStorage.setItem("Cities", JSON.stringify(citiesBtnArr));
+    }
+
+    var getCities = JSON.parse(localStorage.getItem("Cities"));
+
+    console.log(getCities);
+    for (var i = 0; i < citiesBtnArr.length; i++) {
+      var recentSearchButton = document.createElement("button");
+      recentSearchButton.dataset.search = citiesBtnArr[i];
+      recentSearchButton.textContent = citiesBtnArr[i];
+      recentSearchButton.classList.add("d-flex");
+      recentSearchButton.classList.add("city");
+      recentSearchButton.classList.add("btn");
+      recentSearchButton.classList.add("btn-secondary");
+      recentSearchButton.classList.add("flex-grow-1");
+      quickBtn.append(recentSearchButton);
+    }
+
     var base_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_Key}`;
     fetch(base_URL)
       .then((response) => response.json())
@@ -207,14 +219,13 @@ searchButton.addEventListener("click", function (e) {
               var windSpeed = weatherInfo2[i].wind.speed;
               windSpeedEl.textContent = `${windSpeed} KM/H`;
               col2Element.append(windSpeedEl);
-              
+
               // The humidity
               var humidityEl = document.createElement("h6");
               var humidity = weatherInfo2[0].main.humidity;
               humidityEl.textContent = `${humidity} %`;
               col2Element.append(humidityEl);
             }
-          
           });
       });
   }
