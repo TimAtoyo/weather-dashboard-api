@@ -1,3 +1,11 @@
-*{
-    outline: 2px solid red;
+* {
+    /* outline: 2px solid black; */
+}
+.card-body {
+    min-height: 220px;
+}
+
+.today-left 
+,.today-right {
+    width: min-content;
 }

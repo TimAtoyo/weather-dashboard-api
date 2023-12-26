@@ -25,37 +25,51 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="title">
-                        <h1>Weather Dashboard</h1>
-                    </div>
-                    <!-- Form -->
-                    <div class="form">
-                        <form>
-                            <div class="mb-3">
-                                <label for="weatherSearch" class="form-label"> Search for a City:</label>
-                                <input type="text" class="form-control" id="search-input" placeholder="London"
-                                    aria-describedby="">
-                            </div>
-                            <button id="search-button" type="submit" class="btn btn-primary"><i
-                                    class="fa-solid fa-magnifying-glass"></i> Search</button>
-                        </form>
-                    </div>
-                    <div class="quick-btn">
+                <div class="col-lg-4 card">
+                    <div class="card-body">
+                        <div class="title">
+                            <h1>Weather Dashboard</h1>
+                        </div>
+                        <!-- Form -->
+                        <div class="form">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="weatherSearch" class="form-label"> Search for a City:</label>
+                                    <input type="text" class="form-control" id="search-input" placeholder="London"
+                                        aria-describedby="">
+                                </div>
+                                <button id="search-button" type="submit" class="btn btn-primary"><i
+                                        class="fa-solid fa-magnifying-glass"></i> Search</button>
+                            </form>
+                        </div>
+                        <div class="card mt-3">
+                            <div class="quick-btn card-body">
 
+                            </div>
+                        </div>
+                    
                     </div>
+
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card">
-                                <div class="card-body today">
+                            <div class="card d-flex flex-row">
+                                <div class="card-body today-left d-flex align-items-start flex-column">
+
+                                </div>
+                                <div class="card-body today-right d-flex align-items-start flex-column">
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mt-3">
+                            <div class="card">
+                                <div class="row forcast-row card-body">
 
+                                </div>
+                            </div>
+                          
                         </div>
                     </div>
                 </div>
